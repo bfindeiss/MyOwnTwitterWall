@@ -1,0 +1,66 @@
+<head>
+    <title>My own little Twitter wall</title>
+</head>
+
+<body>
+    {{> tweetOverview}}
+</body>
+
+<template name="tweetOverview">     
+    <div class="tweetOverviewArea">
+        {{#each tweetList}}
+        {{> tweetDetail}}
+        {{/each}}
+    </div>
+    <div class="tweetSearchArea">
+        <hr/>
+        {{> tweetSearch}}
+    </div>
+    <div class="tweetInputArea">
+        <hr/>
+        {{> tweetInput}}
+    </div>
+</template>
+
+<template name="tweetDetail">
+    <div class="tweet">        
+        <span class="text">{{text}}</span>
+        <br/>
+        <span class="author">{{author}}</span>   
+        <span class="timestamp">{{prettifyDate timestamp}}</span>   
+    </div>
+</template>
+
+<template name="tweetInput">
+    <div class="tweetInput">
+        <span>
+            <h4>Twittern:</h4>              
+        </span>
+        <span class="loginButtons">
+             <label>Einloggen: </label>
+            {{loginButtons}}
+            <label> oder Name: </label>
+             <input type="text" id="authorName" />
+            <br/><br/>
+        </span>
+        <span>            
+            <textarea rows="5" cols="50" id="tweet-Text" class="inputField">{{tweetText}}</textarea>            
+            <br/>
+        </span>
+        <input type="button" class="saveTweet" value="Speichern" />
+    </div>
+</template>
+
+<template name="tweetSearch">
+    <div class="tweetSearch">
+        <span>
+            <h4>Bei Twitter suchen</h4>              
+        </span>
+        <span class="loginButtons">           
+            <label> Suchstring: </label>
+             <input type="text" id="twitterSearchString" />
+            <br/><br/>
+        </span>        
+        <input type="button" class="searchTwitter" value="Suchen" />
+    </div>
+</template>
